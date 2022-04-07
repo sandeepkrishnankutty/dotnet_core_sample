@@ -81,8 +81,16 @@ stages:
               inputs:
                 targetType: 'inline'
                 script: |
-                  Get-Content $(Pipeline.Workspace)\operations\template.json
-                  Get-childitem
+                  test-path $(System.DefaultWorkingDirectory)\operations\template.json
                   pwd
                   write-host "Path is $(Pipeline.Workspace)"
                   write-host "System path $(System.DefaultWorkingDirectory)"
+            
+            - task: Bash@3
+              inputs:
+                targetType: 'inline'
+                script: |
+                  # Write your commands here
+                  
+                  ls
+              
