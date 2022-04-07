@@ -65,3 +65,4 @@ stages:
           targetType: 'inline'
           script: |
             ls
+            write-host "Path is $(Pipeline.Workspace)"
