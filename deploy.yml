@@ -1,33 +1,33 @@
-
 parameters:
   - name: Environment_ShortName
     type: string
 
 jobs:
-    - deployment: build
-        displayName: Deploy 
-        environment: 'Test Environment'
+  - deployment: build
+    displayName: Deploy 
+    environment: 'Test Environment'
 
-        strategy:
-        runOnce:
-            deploy:
+    strategy:
+      runOnce:
+          deploy:
             steps:
-            
-            - task: DownloadPipelineArtifact@2
+          
+              - task: DownloadPipelineArtifact@2
                 inputs:
-                buildType: 'current'
-                targetPath: '$(System.DefaultWorkingDirectory)'
-            - task: PowerShell@2
-                inputs:
-                targetType: 'inline'
-                script: |
-                    ls
-                    write-host "Path is $(Pipeline.Workspace)"
-                    write-host "System path $(System.DefaultWorkingDirectory)"
-                    Write-host "${{ parameters.Environment_ShortName }}"
+                  buildType: 'current'
+                  targetPath: '$(System.DefaultWorkingDirectory)'
 
-            - task: CmdLine@2
+              - task: PowerShell@2
                 inputs:
-                script: |
-                    echo  '$(System.DefaultWorkingDirectory)'
-                    dir $(System.DefaultWorkingDirectory)
+                  targetType: 'inline'
+                  script: |
+                      ls
+                      write-host "Path is $(Pipeline.Workspace)"
+                      write-host "System path $(System.DefaultWorkingDirectory)"
+                      Write-host "${{ parameters.Environment_ShortName }}"
+
+              - task: CmdLine@2
+                inputs:
+                  script: |
+                      echo  '$(System.DefaultWorkingDirectory)'
+                      dir $(System.DefaultWorkingDirectory)
