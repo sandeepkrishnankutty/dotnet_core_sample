@@ -68,39 +68,12 @@ stages:
   
   - stage: deploy
     displayName: deploy
-    jobs:
-    - deployment: build
-      displayName: Deploy 
-      environment: 'Test Environment'
+    
+    variables:
+      - name: Environment_ShortName
+        value: 'tst'
 
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            
-            - task: DownloadPipelineArtifact@2
-              inputs:
-                buildType: 'current'
-                targetPath: '$(System.DefaultWorkingDirectory)'
-            - task: PowerShell@2
-              inputs:
-                targetType: 'inline'
-                script: |
-                  ls
-                  write-host "Path is $(Pipeline.Workspace)"
-                  write-host "System path $(System.DefaultWorkingDirectory)"
-            
-            - task: Bash@3
-              inputs:
-                targetType: 'inline'
-                script: |
-                  # Write your commands here
-                  
-                  ls
-            
-            - task: CmdLine@2
-              inputs:
-                script: |
-                  echo  '$(System.DefaultWorkingDirectory)'
-                  dir $(System.DefaultWorkingDirectory)
-              
+    jobs:
+    - template: deploy.yml
+      parameters:
+        Environment_ShortName: '$(Environment_ShortName)'
