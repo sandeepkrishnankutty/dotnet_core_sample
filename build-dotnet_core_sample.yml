@@ -77,12 +77,16 @@ stages:
         runOnce:
           deploy:
             steps:
+            
+            - task: DownloadPipelineArtifact@2
+              inputs:
+                buildType: 'current'
+                targetPath: '$(System.DefaultWorkingDirectory)'
             - task: PowerShell@2
               inputs:
                 targetType: 'inline'
                 script: |
-                  test-path $(System.DefaultWorkingDirectory)\operations\template.json
-                  pwd
+                  ls
                   write-host "Path is $(Pipeline.Workspace)"
                   write-host "System path $(System.DefaultWorkingDirectory)"
             
@@ -98,5 +102,5 @@ stages:
               inputs:
                 script: |
                   echo  '$(System.DefaultWorkingDirectory)'
-                  dir $(Pipeline.Workspace)
+                  dir $(System.DefaultWorkingDirectory)
               
