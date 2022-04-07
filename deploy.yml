@@ -11,6 +11,8 @@ jobs:
       runOnce:
           deploy:
             steps:
+
+              - download : none
           
               - task: DownloadPipelineArtifact@2
                 inputs:
