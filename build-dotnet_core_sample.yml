@@ -66,3 +66,4 @@ stages:
           script: |
             ls
             write-host "Path is $(Pipeline.Workspace)"
+            write-host "System path $(System.DefaultWorkingDirectory)"
