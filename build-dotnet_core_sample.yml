@@ -76,4 +76,4 @@ stages:
     jobs:
     - template: deploy.yml
       parameters:
-        Environment_ShortName: '$(Environment_ShortName)'
+        Environment_ShortName: '${{ variables.Environment_ShortName }}'
