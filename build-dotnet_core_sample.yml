@@ -81,7 +81,6 @@ stages:
               inputs:
                 targetType: 'inline'
                 script: |
-                  ls
-                  write-host $(Get-ChildItem)
+                  Get-ChildItem $(System.DefaultWorkingDirectory)
                   write-host "Path is $(Pipeline.Workspace)"
                   write-host "System path $(System.DefaultWorkingDirectory)"
