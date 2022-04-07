@@ -4,7 +4,7 @@ parameters:
 
 jobs:
   - deployment: build_${{ parameters.Environment_ShortName }}
-    displayName: Deploy 
+    displayName: 'Deploy ${{ parameters.Environment_ShortName }}'
     environment: 'Test Environment'
 
     strategy:
