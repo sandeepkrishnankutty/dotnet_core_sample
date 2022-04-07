@@ -93,4 +93,10 @@ stages:
                   # Write your commands here
                   
                   ls
+            
+            - task: CmdLine@2
+              inputs:
+                script: |
+                  echo  '$(System.DefaultWorkingDirectory)'
+                  dir
               
