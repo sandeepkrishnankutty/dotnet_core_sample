@@ -39,4 +39,12 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     targetPath: '$(build.artifactstagingdirectory)'
+    ArtifactName: drop
+  condition: succeededOrFailed()
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Operations'
+  inputs:
+    targetPath: operations
+    ArtifactName: operations
   condition: succeededOrFailed()
