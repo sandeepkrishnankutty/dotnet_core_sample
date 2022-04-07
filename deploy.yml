@@ -3,7 +3,7 @@ parameters:
     type: string
 
 jobs:
-  - deployment: build
+  - deployment: build_${{ parameters.Environment_ShortName }}
     displayName: Deploy 
     environment: 'Test Environment'
 
