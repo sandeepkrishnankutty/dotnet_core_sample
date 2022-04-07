@@ -81,6 +81,8 @@ stages:
               inputs:
                 targetType: 'inline'
                 script: |
-                  Get-Content $(System.DefaultWorkingDirectory)\operations\template.json
+                  Get-Content $(Pipeline.Workspace)\operations\template.json
+                  Get-childitem
+                  pwd
                   write-host "Path is $(Pipeline.Workspace)"
                   write-host "System path $(System.DefaultWorkingDirectory)"
