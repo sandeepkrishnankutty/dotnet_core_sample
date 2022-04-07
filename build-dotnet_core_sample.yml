@@ -9,10 +9,6 @@ trigger:
 variables:
   BuildConfiguration: 'Release'
   BuildPlatform: 'any cpu'
-  system.collectionId: '7a6f8b36-ceb2-4e06-967d-68d8fa570e65'
-  system.debug: 'false'
-  system.definitionId: 21
-  system.teamProject: 'Test Project'
 
 
 pool:
