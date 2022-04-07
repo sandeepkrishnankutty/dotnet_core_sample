@@ -98,5 +98,5 @@ stages:
               inputs:
                 script: |
                   echo  '$(System.DefaultWorkingDirectory)'
-                  dir
+                  dir $(Pipeline.Workspace)
               
