@@ -20,6 +20,7 @@ jobs:
                   targetPath: '$(System.DefaultWorkingDirectory)'
 
               - task: PowerShell@2
+                name: identify_deploy_version
                 inputs:
                   targetType: 'inline'
                   script: |
@@ -27,6 +28,8 @@ jobs:
                       write-host "Path is $(Pipeline.Workspace)"
                       write-host "System path $(System.DefaultWorkingDirectory)"
                       Write-host "${{ parameters.Environment_ShortName }}"
+                      $csOutgoingVersion='blue'
+                      Write-Host "##vso[task.setvariable variable=cs_OutgoingVersion;isOutput=true]$csOutgoingVersion"
 
               - task: CmdLine@2
                 inputs:
