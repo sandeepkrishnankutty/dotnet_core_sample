@@ -21,7 +21,7 @@ stages:
     
     jobs:
     - job: build
-      displayName: 'Job with configuration variables['BuildConfiguration']'
+      displayName: 'Job with configuration ${{ variables.BuildConfiguration }}'
       steps:
       
       - task: Cache@2
