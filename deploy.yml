@@ -32,6 +32,7 @@ jobs:
                       Write-Host "##vso[task.setvariable variable=cs_OutgoingVersion;isOutput=true]$csOutgoingVersion"
 
               - task: CmdLine@2
+                displayName: 'Swap Production CloudService ${{ variables.identify_deploy_version.cs_OutgoingVersion }} with Staging'
                 inputs:
                   script: |
                       echo  '$(System.DefaultWorkingDirectory)'
